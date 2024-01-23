@@ -8,6 +8,16 @@ Nexmonは，Cypress/Bloadcom製のWI-Fiチップ向けに開発された，オ�
 - microSDをRaspberryPiに差し込み，起動(HDMIを電源より先に挿入)
 - (推奨)sudo raspi-configコマンドで[System Option]>[Boot/Auto Login]>[Yes]をしておくと次回以降自動でログイン  
 
+### Wi-Fi接続設定
+- 設定(etc)フォルダ下の，WPA認証ファイルをエディタで開く(以下，nanoエディタでの例)
+```
+$ sudo nano /etc/wpa_supplicant/wpa_supplicant.conf
+$ rfkill unblock wifi
+$ sudo ifconfig wlan0 up
+$ sudo reboot
+```
+### SSH接続設定
+
 ## Nexmonのインストール
 
 ## CSI収集テスト
