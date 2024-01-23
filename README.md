@@ -13,7 +13,7 @@ Nexmonは，Cypress/Bloadcom製のWI-Fiチップ向けに開発された，オ�
 ```
 $ sudo nano /etc/wpa_supplicant/wpa_supplicant.conf
 ```
-以下の文を，末尾に追記・保存して閉じる(""は必要)  
+- 以下の文を，末尾に追記・保存して閉じる(""は必要)
 ```
 network={
 ssid="任意のSSID"
@@ -21,12 +21,14 @@ psk="パスワード"
 key_mgmt=WPA-PSK
 }
 ```
-
+- Wi-Fiの内部ロックを外して無線LANの有効化したうえで再起動する
 ```
 $ rfkill unblock wifi
 $ sudo ifconfig wlan0 up
 $ sudo reboot
 ```
+ifconfigコマンドでwlan0の項目にIPアドレスが表示されていれば完了  
+
 ### SSH接続設定
 
 ## Nexmonのインストール
