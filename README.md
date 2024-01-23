@@ -76,7 +76,7 @@ $ sudo tcpdump –i wlan0 dst port 5500 –vv –w output.pcap –c 1000
 ※Pingを発生させるプログラム(Ping.py)があると便利
 
 ### pcapファイルの復号
-- WinSCPなどを使用して，RaspberryPiからpcapファイルをダウンロードする
+- [WinSCP](https://winscp.net/eng/download.php)などを使用して，RaspberryPiからpcapファイルをダウンロードする
 - 「csi_changer」フォルダ内の「pcapfiles」フォルダに復号したいpcapファイルを置く
 - csi_changer.pyを起動する
 ```
