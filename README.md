@@ -43,11 +43,24 @@ $ ssh pi@XXX.XXX.XXX.XXX  #先ほど確認したIPアドレスを入力
 　解決方法：「known_hosts」を削除して，再度SSH接続を実行
 
 ## Nexmonのインストール
+- Nexmon_csiのバイナリファイルからインストールスクリプトを実行(目安：2分)
+```
+$ sudo curl -fsSL https://raw.githubusercontent.com/nexmonster/nexmon_csi_bin/main/install.sh | sudo bash
+$ sudo reboot
+```
+※これ以降，無線SSH接続ができなくなるため，有線SSH接続に切り替える  
 
 ## CSI収集テスト
 ### 通信環境の確認
+- [Wi-Fiアナライザ](ms-windows-store://pdp/?hl=ja-jp&gl=jp&productid=9NBLGGH33N0N&mode=mini&pos=0%2C0%2C1920%2C1128&referrer=storeforweb&source=https%3A%2F%2Fwww.google.com%2F)などで観測したい無線通信のチャネルと帯域幅などを確認する
+- mcpコマンドで，base64でエンコードされたパラメータ文字列を作成
+```
+$ sudo mcp -C 1 -N 1 -c チャネル/帯域幅
+```
+- 出力された文字列を確認(記録)する
 
 ### CSI収集開始
+
 
 ### pcapファイルの復号
 
