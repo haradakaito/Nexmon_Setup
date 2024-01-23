@@ -27,9 +27,20 @@ $ rfkill unblock wifi
 $ sudo ifconfig wlan0 up
 $ sudo reboot
 ```
-ifconfigコマンドでwlan0の項目にIPアドレスが表示されていれば完了  
+- ifconfigコマンドでwlan0の項目にIPアドレスが表示されていれば完了  
 
 ### SSH接続設定
+- SSH接続を有効にする
+sudo raspi-configコマンドで[Interfacing Options]>[SSH]>[Yes]を選択  
+- RaspberryPiのIPアドレスを確認する
+ipconfigコマンドでwlan0に記載のIPアドレスを確認(記録)しておく
+- SSH接続を行うデバイスで，PowerShellを管理者権限で起動
+```
+$ ssh pi@XXX.XXX.XXX.XXX  #先ほど確認したIPアドレスを入力
+```
+※警告「WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED!」が出た場合  
+　原因：過去にSSH接続を行った際の認証キーが「.ssh」フォルダの「known_hosts」ファイルに残っている  
+　解決方法：「known_hosts」を削除して，再度SSH接続を実行
 
 ## Nexmonのインストール
 
