@@ -4,8 +4,9 @@ Nexmonは，Cypress/Bloadcom製のWI-Fiチップ向けに開発された，オ�
 
 ## 初期設定
 ### 起動設定
-- [Nexmon対応のイメージ](https://downloads.raspberrypi.org/raspios_lite_armhf/images/raspios_lite_armhf-2022-01-28/2022-01-28-raspios-bullseye-armhf-lite.zip)を，[RasPi Imager](https://downloads.raspberrypi.org/imager/imager_latest.exe)でmicroSDに書き込み起動    
-
+- [Nexmon対応のイメージ](https://downloads.raspberrypi.org/raspios_lite_armhf/images/raspios_lite_armhf-2022-01-28/2022-01-28-raspios-bullseye-armhf-lite.zip)を，[RasPi Imager](https://downloads.raspberrypi.org/imager/imager_latest.exe)でmicroSDに書き込む    
+- microSDをRaspberryPiに差し込み，起動(HDMIを電源より先に挿入)
+- (推奨)sudo raspi-configコマンドで[System Option]>[Boot/Auto Login]>[Yes]をしておくと次回以降自動でログイン  
 
 ## Nexmonのインストール
 
