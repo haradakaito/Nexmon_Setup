@@ -12,6 +12,17 @@ Nexmonは，Cypress/Bloadcom製のWI-Fiチップ向けに開発された，オ�
 - 設定(etc)フォルダ下の，WPA認証ファイルをエディタで開く(以下，nanoエディタでの例)
 ```
 $ sudo nano /etc/wpa_supplicant/wpa_supplicant.conf
+```
+以下の文を，末尾に追記・保存して閉じる(""は必要)  
+```
+network={
+ssid="任意のSSID"
+psk="パスワード"
+key_mgmt=WPA-PSK
+}
+```
+
+```
 $ rfkill unblock wifi
 $ sudo ifconfig wlan0 up
 $ sudo reboot
