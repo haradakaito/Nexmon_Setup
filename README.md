@@ -53,16 +53,42 @@ $ sudo reboot
 ## CSI収集テスト
 ### 通信環境の確認
 - [Wi-Fiアナライザ](https://apps.microsoft.com/detail/9NBLGGH33N0N?hl=ja-JP&gl=JP)などで観測したい無線通信のチャネルと帯域幅などを確認する
-- mcpコマンドで，base64でエンコードされたパラメータ文字列を作成
+- mcpコマンドで，base64でエンコードされたパラメータ文字列を作成する
 ```
 $ sudo mcp -C 1 -N 1 -c チャネル/帯域幅
 ```
 - 出力された文字列を確認(記録)する
 
 ### CSI収集開始
-
+- 観測パラメータ文字列を設定し，モニターモードインターフェース(mon0)を追加する
+```
+$ sudo ifconfig wlan0 up
+$ sudo nexutil –Iwlan0 –Iwlan0 –s500 –b –l34 –v(mcpで生成したパラメータ文字列)
+$ sudo iw dev wlan0 interface add mon0 type monitor
+$ sudo ip link set mon0 up
+```
+- tcpdumpコマンドで，CSIの収集を開始する
+※ 例)1000パケットに達するまで観測し，output.pcapファイルとして出力する  
+```
+$ sudo tcpdump –i wlan0 dst port 5500 –vv –w output.pcap –c 1000
+```
+※次回からは，モニターモードインターフェースを追加するところから始めればいい
+※Pingを発生させるプログラム(Ping.py)があると便利
 
 ### pcapファイルの復号
+- WinSCPなどを使用して，RaspberryPiからpcapファイルをダウンロードする
+- 「csi_changer」フォルダ内の「pcapfiles」フォルダに復号したいpcapファイルを置く
+- csi_changer.pyを起動する
+```
+$ python csi_changer.py
+```
+- 「pcapファイル名」と「帯域幅」を入力
+```
+$ python csi_changer.py
+Pcap File Name: XXX
+Band Width: YYY
+```
+- resultフォルダ内に「XXX_CSI_Amp.csv」と「XXX_CSI_Pha.csv」が出力されていれば完了
 
 ## 参考
 Nexmon公式：https://github.com/seemoo-lab/nexmon  
