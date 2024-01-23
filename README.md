@@ -73,7 +73,7 @@ $ sudo ip link set mon0 up
 $ sudo tcpdump –i wlan0 dst port 5500 –vv –w output.pcap –c 1000
 ```
 ※次回からは，モニターモードインターフェースを追加するところから始めればいい
-※Pingを発生させるプログラム(Ping.py)があると便利
+※Pingを発生させるプログラム(ping.py)があると便利
 
 ### pcapファイルの復号
 - [WinSCP](https://winscp.net/eng/download.php)などを使用して，RaspberryPiからpcapファイルをダウンロードする
