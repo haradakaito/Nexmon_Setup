@@ -52,7 +52,7 @@ $ sudo reboot
 
 ## CSI収集テスト
 ### 通信環境の確認
-- [Wi-Fiアナライザ](ms-windows-store://pdp/?hl=ja-jp&gl=jp&productid=9NBLGGH33N0N&mode=mini&pos=0%2C0%2C1920%2C1128&referrer=storeforweb&source=https%3A%2F%2Fwww.google.com%2F)などで観測したい無線通信のチャネルと帯域幅などを確認する
+- [Wi-Fiアナライザ](https://apps.microsoft.com/detail/9NBLGGH33N0N?hl=ja-JP&gl=JP)などで観測したい無線通信のチャネルと帯域幅などを確認する
 - mcpコマンドで，base64でエンコードされたパラメータ文字列を作成
 ```
 $ sudo mcp -C 1 -N 1 -c チャネル/帯域幅
