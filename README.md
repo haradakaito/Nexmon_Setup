@@ -91,5 +91,5 @@ Band Width: YYY
 ```
 - resultフォルダ内に「XXX_CSI_Amp.csv」と「XXX_CSI_Pha.csv」が出力されていれば完了
 
-## GitHubリポジトリ
-https://github.com/haradakaito/Nexmon_Setup/tree/main 
+## Qitta記事
+https://qiita.com/muumin_0525/items/8e9ef1081b372509d4a1
