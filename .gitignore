@@ -1,0 +1,9 @@
+# 仮想環境
+.venv_nexmon/**
+
+# python-version
+.python-version
+
+**/__pycache__/
+
+**/document/**
