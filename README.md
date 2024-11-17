@@ -80,4 +80,9 @@ $ tcpdump -i wlan0 dst port 5500 -vv -w {任意のファイル名}.pcap -c {観�
 $ sudo tcpdump -i wlan0 dst port 5500 -vv -w output.pcap -c 1000
 ```
 
+```
+// MACアドレスでフィルタリングするオプション（-m）の使用方法
+$ sudo mcp -C 1 -N 1 -c {チャネル}/{帯域幅} -m XX:XX:XX:XX:XX:XX
+```
+
 ※以降は，mon0インターフェースを追加する部分からコマンドを打ち込みなおす
