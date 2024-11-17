@@ -39,8 +39,6 @@ $ sudo reboot
 ### 通信環境の確認
 - **Wi-Fiアナライザ**などを使用して，観測したい無線通信チャネルと帯域幅を確認する
 
-https://apps.microsoft.com/detail/9NBLGGH33N0N?hl=ja-JP&gl=JP
-
 - mcpコマンドで，base64でエンコードされたパラメータ文字列を作成する
 
 ```
