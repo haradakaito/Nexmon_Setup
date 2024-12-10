@@ -1,35 +1,41 @@
+import os
+import sys
+from datetime import datetime
+
 from lib._csichanger import InputParser, OutputFormatter, Decoder
 
-# CSIデータの処理
-def decode_pcap2csv(filename: str, bandwidth: str, command: str) -> bool:
-    """CSIデータ(.pcap)をCSVファイルに変換する"""
+# 定数の定義
+CSV_DIR = './result'
+
+# 異常系処理
+def handle_error(message: str):
+    now = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+    print(f"[{now}] {message}")
+    sys.exit(1)
+
+# CSIデータ(.pcap)をCSVファイルに変換する
+def decode_pcap2csv(filename: str) -> bool:
     try:
-        print('Start Parsing input parameters...')
         # 入力パラメータの解析
-        inputparser = InputParser(filename, bandwidth, command)
+        inputparser = InputParser(filename=filename)
         if not inputparser.is_valid():
-            print("\nError: Invalid input parameters.")
-            print("1. Is the filename correct? (No extensions are needed)")
-            print("2. Does the specified file exist under the 'pcapfiles' directory?")
-            print("3. Is the bandwidth set to one of the valid values? (20, 40, 80, 160)")
-            print("4. Is the command format 'number-number'?")
-            return False
+            handle_error(message='入力パラメータが不正です')
         params = inputparser.get_params()
 
-        print('Start decoding...')
-        # RSSIデータ処理
-        decoder = Decoder(params['filepath'], params['command']['start'], params['command']['end'])
-        amp_list = decoder.decode()
+        # 振幅データ処理（抽出）
+        decoder  = Decoder(filepath=params['filepath'])
+        amp_list, phase_list = decoder.decode()
 
-        print('Start outputting to CSV file...')
         # CSVファイル出力
-        outputformatter = OutputFormatter(params['filename'])
-        outputformatter.to_csv(amp_list)
+        outputformatter = OutputFormatter()
+        outputformatter.to_csv(data=amp_list, save_path=os.path.join(CSV_DIR, f"{params['filename']}_amp.csv"))     # 振幅データ
+        outputformatter.to_csv(data=phase_list, save_path=os.path.join(CSV_DIR, f"{params['filename']}_phase.csv")) # 位相データ
         return True
     except Exception as e:
-        print(e)
-        return False
+        handle_error(message=str(e))
 
-# テスト用
 if __name__ == '__main__':
-    decode_pcap2csv(filename='sample', bandwidth='20', command='0-10')
+    # ファイル名の入力
+    filename = input('変換したいファイル名を入力してください: ')
+    # CSIデータの変換
+    decode_pcap2csv(filename=filename)
